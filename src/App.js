@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import CustomPage from "./components/CustomPage";
+import SubmissionPage from "./components/SubmissionPage";
 
-function App() {
+const App = () => {
+  const [countryInput, setCountryInput] = useState();
+  const [stateInput, setStateInput] = useState();
+
+  const inputHandler = (values) => {
+    console.log(values);
+    setCountryInput(values.selectedCountry);
+    setStateInput(values.selectedState);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route exact path="/" element={<CustomPage onInput={inputHandler} />} />
+        
+        <Route
+          exact
+          path="/submit"
+          element={<SubmissionPage country={countryInput} state={stateInput} />}
+        />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;

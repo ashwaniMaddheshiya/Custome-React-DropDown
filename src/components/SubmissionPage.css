@@ -1,0 +1,19 @@
+.submissionContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.cardContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardContent h2{
+    margin: 1rem;
+    color: blue;
+}
+
